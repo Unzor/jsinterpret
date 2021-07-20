@@ -2,6 +2,14 @@
 A JavaScript interpreter inside of NodeJS.
 
 # Usage
+First, use this:
+```
+npm install jsinterpret
+```
+
+Then, if you already have NodeJS installed, run ```npm init -y``` and create index.js.
+
+Contents of index.js:
 ```javascript
 var jsinterpret=require('jsinterpret');
 
