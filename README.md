@@ -14,9 +14,7 @@ Contents of index.js:
 ```javascript
 var jsinterpret=require('jsinterpret');
 
-jsinterpret.interpret("console.log('Hello World!');", function(e){
-  console.log(e);
-});
+jsinterpret.interpret("console.log('Hello World!');");
 ```
 To require() a package, use jsinterpret.addPackage(packageName) before any script, or install it in your machine.
 Example:
@@ -31,6 +29,19 @@ console.log(chalk.blue('Hello World!'));`, function(e){
   console.log(e);
 });
 ```
+
+If you wanna use it for another reason instead of logging it in the console, use this:
+
+```javascript
+var jsinterpret=require('jsinterpret');
+
+jsinterpret.interpret("console.log('Hello World!')", function(result){
+alert(result);
+});
+```
+
+Note: DO NOT USE CALLBACK IF YOU ARE TRYING TO LOG A MESSAGE, BECAUSE IT WILL GIVE AN ERROR. Instead, if you are trying to log a message, only use the code and not the callback.
+
 ## Browser
 First, get the script from a CDN
 ```html
@@ -50,5 +61,7 @@ jsinterpret.interpret("console.log('Hello World!')", function(result){
 alert(result);
 });
 ```
+
+Note: DO NOT USE CALLBACK IF YOU ARE TRYING TO LOG A MESSAGE, BECAUSE IT WILL GIVE AN ERROR. Instead, if you are trying to log a message, only use the code and not the callback.
 
 You can also ```require()``` the VM module in the interpreter.
