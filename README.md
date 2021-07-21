@@ -32,7 +32,11 @@ console.log(chalk.blue('Hello World!'));`, function(e){
 });
 ```
 ## Browser
-First, get the script from a CDN or download it.
+First, get the script from a CDN
+```html
+<script src="https://cdn.jsdelivr.net/gh/Unzor/jsinterpret/browser/jsinterpret_browser.min.js"></script>
+```
+or download it.
 Then, use it like this:
 ```javascript
 var jsinterpret=new JSInterpret();
