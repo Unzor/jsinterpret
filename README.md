@@ -41,9 +41,10 @@ jsinterpret.interpret("console.log('Hello World!')");
 If you wanna use it for another reason instead of logging it in the console, use this:
 
 ```javascript
+var jsinterpret=new JSInterpret();
 jsinterpret.interpret("console.log('Hello World!')", function(result){
 alert(result);
 });
 ```
 
-You can also require() the VM module in the interpreter.
+You can also ```require()``` the VM module in the interpreter.
