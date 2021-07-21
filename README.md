@@ -2,6 +2,7 @@
 A JavaScript interpreter inside of NodeJS.
 
 # Usage
+## NodeJS
 First, use this:
 ```
 npm install jsinterpret
@@ -30,3 +31,15 @@ console.log(chalk.blue('Hello World!'));`, function(e){
   console.log(e);
 });
 ```
+## Browser
+First, get the script from a CDN or download it.
+Then, use it like this:
+```javascript
+jsinterpret.interpret("console.log('Hello World!')");
+```
+If you wanna use it for another reason instead of logging it in the console, use this:
+jsinterpret.interpret("console.log('Hello World!')", function(result){
+alert(result);
+});
+
+You can also require() the VM module in the interpreter.
