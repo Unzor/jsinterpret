@@ -35,6 +35,7 @@ console.log(chalk.blue('Hello World!'));`, function(e){
 First, get the script from a CDN or download it.
 Then, use it like this:
 ```javascript
+var jsinterpret=new JSInterpret();
 jsinterpret.interpret("console.log('Hello World!')");
 ```
 If you wanna use it for another reason instead of logging it in the console, use this:
