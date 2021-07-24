@@ -64,4 +64,4 @@ alert(result);
 
 Note: DO NOT USE CALLBACK IF YOU ARE TRYING TO LOG A MESSAGE, BECAUSE IT WILL GIVE AN ERROR. Instead, if you are trying to log a message, only use the code and not the callback.
 
-You can also ```require()``` the VM module in the interpreter.
+You can also ```require()``` a few built-in modules in the interpreter.
