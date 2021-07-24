@@ -1,0 +1,142 @@
+<script src="https://cdn.jsdelivr.net/gh/Unzor/jsinterpret/browser/jsinterpret_browser.min.js"></script>
+<h1>
+JSInterpret
+</h1>
+<p> A JavaScript interpreter for both NodeJS and the browser. </p>
+<h2> Demo </h2>
+<noscript>
+<p> You must have JavaScript enabled for the demo to work. </p>
+</noscript>
+<a href="#" id="nodejs">NodeJS Demo (Support for NPM packages)</a>
+<div id="nodejsdemo" style="display: none;">
+<h1> JSInterpret - NodeJS Demo </h1> 
+  <input id="nodejs_pkg" placeholder="NPM Package here...">  
+  <button id="package_btn"> Add Package</button> 
+  <div>
+    
+  </div>
+
+  <textarea id="nodejs_input" style="margin: 0px; width: 632px; height: 341px;"></textarea> 
+  <div></div> 
+  <button id="interpret_btn"> Interpret! </button> 
+  <script> function node_interpret(a){
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://jsinterpret-req.seven7four4.repl.co/interpretJS");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+
+      request.send(JSON.stringify({code: a}));
+
+  request.onreadystatechange = function() {
+    if (request.readyState === 4) {
+alert(JSON.parse(request.response).result);
+    }
+  }
+}
+
+function node_add_npm(a){
+  document.querySelector("#package_btn").innerText="Adding package...";
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://jsinterpret-req.seven7four4.repl.co/addPackage");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+
+      request.send(JSON.stringify({package: a}));
+
+  request.onreadystatechange = function() {
+    if (request.readyState === 4) {
+document.querySelector("#package_btn").innerText="Response:" + request.response;
+      setTimeout(function(){
+        document.querySelector("#package_btn").innerText="Add Package";
+      }, 3000)
+    }
+  }
+}
+    
+    document.getElementById("interpret_btn").onclick=function(){ 
+      node_interpret(document.querySelector("#nodejs_input").value)
+    } 
+    
+       document.getElementById("package_btn").onclick=function(){ 
+      node_add_npm(document.querySelector("#nodejs_pkg").value)
+    } 
+  </script> 
+</div>
+<div></div>
+<a href="#" id="browser">Browser Demo (Support for some built-in packages)</a>
+<div id="browserdemo" style="display: none;">
+<h1> JSInterpret - Browser Demo </h1> <textarea id="browser_input" style="margin: 0px; width: 632px; height: 341px;"></textarea> <div></div> <button id="interpret_btn"> Interpret! </button> <script> document.getElementById("interpret_btn").onclick=function(){ var jsinterpret=new JSInterpret(); jsinterpret.interpret(document.querySelector('#browser_input').value, function(result){ alert(result); }); } </script> 
+</div>
+<h2>
+Usage
+</h2>
+<h3>
+NodeJS
+</h3>
+<p>
+First, install the NPM package:
+</p>
+<code style="background: black; color: white;">
+npm install jsinterpret
+</code>
+<div></div>
+<p>
+Then, use it like this: 
+</p>
+<div style="background: black; color: white;">
+<code>
+const interpreter=require('jsinterpret');<div></div>
+/*<div></div>
+If you want to use a package in the interpreter, install it in your machine or use this in the script:<div></div>
+<div></div>
+interpreter.addPackage('your NPM package here');<div></div>
+*/<div></div>
+interpreter.interpret("console.log('Hello World!')");<div></div>
+<div></div>
+// If you want to do something with the result OTHER than logging it, then you can use a callback as the 2nd arguement. Don't use the callback if you're gonna log it, because the call stack will be exceeded.
+</code>
+</div>
+<h3>
+Browser
+</h3>
+<p>
+Get the code from a CDN:
+</p>
+<code>&lt;script src="https://cdn.jsdelivr.net/gh/Unzor/jsinterpret/browser/jsinterpret_browser.min.js"&gt;&lt;/script&gt;</code>
+<p> or download it from <a href="browser/jsinterpret_browser.min.js">here.</a></p>
+<p> Use this code in your site: </p>
+<div style="background: black; color: white;">
+<code>
+var interpreter=new JSInterpret();<div></div>
+interpreter.interpret("console.log('Hello World!')", function(a){<div></div>
+alert(a);<div></div>
+});<div></div>
+// If you want to do something with the result OTHER than logging it, then you can use a callback as the 2nd arguement. Don't use the callback if you're gonna log it, because the call stack will be exceeded.
+</code>
+</div>
+<script>
+  var node_open=false;
+    var browser_open=false;
+document.getElementById("nodejs").onclick=function(){
+  if (node_open === false){
+    node_open = true;
+document.getElementById("nodejsdemo").style.display="block";
+  }
+  else {
+    node_open=false;
+    document.getElementById("nodejsdemo").style.display="none";
+  }
+};
+
+document.getElementById("browser").onclick=function(){
+    if (browser_open === false){
+      browser_open=true;
+document.getElementById("browserdemo").style.display="block";
+    } else {
+          browser_open=false;
+      document.getElementById("browserdemo").style.display="none";
+    }
+};
+</script>
