@@ -11,7 +11,7 @@ const repl = require("repl");
 const path = require("path");
 const fs = require("fs");
 const vm = require("vm");
-const rl = require("./readline-sync.js");
+const rl = require('readline-sync');
 const Module = require("module");
 
 let r;
