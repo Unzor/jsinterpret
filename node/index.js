@@ -6,6 +6,7 @@ var return_log=function(a){callback(a);}
   return string.split(search).join(replace);
 }
 
+this.code=replaceAll(__code__, 'console.log(', 'return_log(');
 const util = require("util");
 const repl = require("repl");
 const path = require("path");
